@@ -17,20 +17,23 @@ const Manager = require("./lib/Manager");
 
 
 const init = () => {
-    employeeInfo(response)
-    if (response.role === "Engineer") {
-        engineerEmp();
-    } else if (response.role === "Manager") {
-        managerEmp();
-    } else if (response.role === "Intern") {
-        internEmp();
-    }
+    employeeInfo()
+    .then(response => {
+        if (response.role === "Engineer") {
+            engineerEmp();
+        } else if (response.role === "Manager") {
+            managerEmp();
+        } else if (response.role === "Intern") {
+            internEmp();
+        }
+    }) 
+
 };
 
 
 // this will allow us to ask for user input on the emplyee
 const employeeInfo = () => {
-     inquirer
+    return inquirer
         .prompt([
             {
                 // Employee Name
@@ -66,7 +69,6 @@ const employeeInfo = () => {
 
 };
 
-const response = employeeInfo();
 
 const managerEmp = () => {
     return inquirer
