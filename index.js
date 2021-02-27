@@ -25,7 +25,14 @@ const init = () => {
             managerEmp();
         } else if (response.role === "Intern") {
             internEmp();
-        }
+        }return newMember()
+        .then(response => {
+            if(response.add_new === "Yes") {
+                employeeInfo();
+            }else {
+                // generateHTML();
+            }
+        })
     }) 
 
 };
@@ -44,7 +51,7 @@ const employeeInfo = () => {
             {
                 // Employee Title
                 type: 'list',
-                message: 'Select ',
+                message: 'Select: ',
                 choices: ['Employee',
                     'Manager',
                     'Engineer',
@@ -82,11 +89,6 @@ const managerEmp = () => {
         ]);
 };
 
-
-
-
-
-
 const engineerEmp = () => {
     return inquirer
         .prompt([
@@ -113,6 +115,20 @@ const internEmp = () => {
         ]);
 };
 
+const newMember = () => {
+    return inquirer 
+    .prompt([
+        {
+            // Employee Title
+            type: 'list',
+            message: 'Would you like to add another employee?',
+            choices: ['Yes',
+                'No',
+            ],
+            name: 'add_new',
+        },
+    ])
+}
 
 
 init();
