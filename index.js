@@ -10,11 +10,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
-
-
-
 // let team = [];
-
 
 const init = () => {
     employeeInfo()
@@ -25,18 +21,19 @@ const init = () => {
             managerEmp();
         } else if (response.role === "Intern") {
             internEmp();
-        }return newMember()
+        }   newMember()
         .then(response => {
             if(response.add_new === "Yes") {
                 employeeInfo();
-            }else {
+            }else if(response.add_new === "No") {
                 // generateHTML();
+                console.log("No new employees.")
             }
+            
         })
     }) 
 
 };
-
 
 // this will allow us to ask for user input on the emplyee
 const employeeInfo = () => {
