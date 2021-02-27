@@ -13,12 +13,24 @@ const Manager = require("./lib/Manager");
 
 
 
+// let team = [];
 
+
+const init = () => {
+    employeeInfo(response)
+    if (response.role === "Engineer") {
+        engineerEmp();
+    } else if (response.role === "Manager") {
+        managerEmp();
+    } else if (response.role === "Intern") {
+        internEmp();
+    }
+};
 
 
 // this will allow us to ask for user input on the emplyee
 const employeeInfo = () => {
-    return inquirer
+     inquirer
         .prompt([
             {
                 // Employee Name
@@ -36,7 +48,7 @@ const employeeInfo = () => {
                     'Intern',
 
                 ],
-                name: 'title',
+                name: 'role',
             },
             {
                 // Employee id
@@ -54,10 +66,10 @@ const employeeInfo = () => {
 
 };
 
-employeeInfo();
+const response = employeeInfo();
 
 const managerEmp = () => {
-  return inquirer
+    return inquirer
         .prompt([
             {
                 // Employee office number function call IF MANAGER is selcted
@@ -68,13 +80,13 @@ const managerEmp = () => {
         ]);
 };
 
-managerEmp();
-engineerEmp();
-internEmp();
+
+
+
 
 
 const engineerEmp = () => {
-   return inquirer
+    return inquirer
         .prompt([
             {
                 // put in Engineer function call IF engineer selected in list
@@ -87,7 +99,7 @@ const engineerEmp = () => {
 };
 
 const internEmp = () => {
-   return inquirer
+    return inquirer
         .prompt([
             {
                 // put int intern function call IF intern selected in list
@@ -98,3 +110,7 @@ const internEmp = () => {
             },
         ]);
 };
+
+
+
+init();
