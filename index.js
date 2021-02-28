@@ -1,4 +1,3 @@
-const inqurier = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 const inquirer = require("inquirer");

@@ -51,3 +51,4 @@
 [Github](https://github.com/Haru2727)
 [Demo](https://drive.google.com/file/d/1cW34AhwyNKyRBAs-XYcbU7IXjMErbqq5/view)
     
+![Screenshot](./screenshots/screenshot.png?raw=true "Screenshot Top Half")
