@@ -49,7 +49,7 @@ const employeeInfo = () => {
                 // Employee Title
                 type: 'list',
                 message: 'Select: ',
-                choices: [
+                choices: ['Employee',
                     'Manager',
                     'Engineer',
                     'Intern',
