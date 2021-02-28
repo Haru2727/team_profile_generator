@@ -1,3 +1,9 @@
+const generateEngineer = require("../dist/generateEngineer");
+const generateIntern = require("../dist/generateIntern");
+const generateManager = require("../dist/generateManager");
+
+function generateTeamPage(team) {
+return `
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,22 +20,15 @@
 
   <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <div class="row">
-    <h1 class="display-4" text-align="center">Meet the Team</h1>
-  </div>
+    <h1 class="display-4" align="center">Meet the Team</h1>
   </div>
 </div>
+ 
+${generateEngineer(team)}
 
+${generateIntern(team)}
 
-
-
-
-    
-    ${generateEngineer(response)}
-
-    ${generateIntern(response)}
-
-    ${generateManager(response)}
+${generateManager(team)}
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -42,4 +41,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
     -->
   </body>
-</html>
+</html>`
+
+}
+
+module.exports = generateTeamPage;

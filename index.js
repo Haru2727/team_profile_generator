@@ -3,6 +3,8 @@ const fs = require("fs");
 const util = require("util");
 const inquirer = require("inquirer");
 const writeFileAsync = util.promisify(fs.writeFile);
+const generateTeamPage = require("./src/generateTeamPage");
+
 
 // inherent classes
 const Employee = require("./lib/Employee");
@@ -11,7 +13,9 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
 
-// let team = [];
+const team = [];
+
+
 
 const init = async () => {
     await employeeInfo()
@@ -23,7 +27,9 @@ const init = async () => {
             } else if (response.role === "Intern") {
                 return internEmp();
             };
+
         });
+
     newMember()
 
 };
@@ -43,7 +49,7 @@ const employeeInfo = () => {
                 // Employee Title
                 type: 'list',
                 message: 'Select: ',
-                choices: ['Employee',
+                choices: [
                     'Manager',
                     'Engineer',
                     'Intern',
@@ -106,7 +112,32 @@ const internEmp = () => {
         ]);
 };
 
-const newMember = () => {
+const makingTeam = () => {
+    const newTeam = team;
+    if (employeeInfo.role === "Engineer") {
+       return newTeam = new Engineer(name, role, id, email, github);
+    } else if (employeeInfo.role === "Intern") {
+      return  newTeam = new Intern(name, role, id, email, school);
+    } else if (employeeInfo.role === "Manager") {
+       return newTeam = new Manager(name, role, id, email, office_number);
+    } team.push(newTeam); 
+};
+
+const generateHTML =  () => {
+ makingTeam()
+    .then(response => {
+        const genTeamPage = generateTeamPage(response);
+        writeFileAsync("./src/main.html", genTeamPage)
+            .then(() => console.log("Succes!"))
+            .catch(error => console.log(error));
+    })
+};
+
+
+
+init();
+
+const newMember = async () => {
     return inquirer
         .prompt([
             {
@@ -120,22 +151,11 @@ const newMember = () => {
             },
         ]).then(response => {
             if (response.add_new === "Yes") {
-
-               init();
+                init();
             } else if (response.add_new === "No") {
-                // generateHTML();
-                console.log("No new employees.")
+                console.log("No new employees.");
+                 generateHTML(); 
             };
 
         });
-};
-
-init()
-
-
-
-
-
-
-
-
+    };
