@@ -30,8 +30,8 @@ const init = async () => {
 
         });
 
-    newMember()
-
+    newMember();
+    makingTeam();
 };
 
 
@@ -113,24 +113,23 @@ const internEmp = () => {
 };
 
 const makingTeam = () => {
-    const newTeam = team;
+    let newTeam;
     if (employeeInfo.role === "Engineer") {
        return newTeam = new Engineer(name, role, id, email, github);
     } else if (employeeInfo.role === "Intern") {
       return  newTeam = new Intern(name, role, id, email, school);
     } else if (employeeInfo.role === "Manager") {
        return newTeam = new Manager(name, role, id, email, office_number);
-    } team.push(newTeam); 
+    } team.push(newTeam); {
+
+    }
 };
 
 const generateHTML =  () => {
- makingTeam()
-    .then(response => {
-        const genTeamPage = generateTeamPage(response);
+        const genTeamPage = generateTeamPage(team);
         writeFileAsync("./src/main.html", genTeamPage)
             .then(() => console.log("Succes!"))
             .catch(error => console.log(error));
-    })
 };
 
 
