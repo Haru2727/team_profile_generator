@@ -1,39 +1,11 @@
-const Engineer = require("../lib/Engineer");
+const Engineer = require("../lib/engineer");
 
-describe("Engineer class", () => {
-
-    describe("Initialization", () => {
-        it("Should check to ensure an instance of Engineer was created when prompted with new Engineer()", () => {
-            const engineer = new Engineer();
-    
-            expect(typeof engineer).toEqual("object");
-        });
-    
-        it("Should set github based off the constructor", () => {
-            const githubVal = "Jonathanstoll0603";
-            const engineer = new Engineer("Jon", 1, "Jon@email.com", githubVal);
-            // Testing to see if you are passing legitamte values to the Employee class contructor
-            expect(engineer.github).toEqual(githubVal);
-        });
+describe("Engineer Class", () => {
+    it("Engineer instance", () => {
+        const engg = new Engineer('Arash', '123', 'test@test.com', 'haru2727');
+        expect(engg.name).toBe("Arash");
+        expect(engg.id).toBe("123");
+        expect(engg.email).toBe("test@test.com");
+        expect(engg.github).toBe("haru2727");
+      });
     });
-
-    describe("getGitHub", () => {
-        
-        it("should return github username when getGitHub is called", () => {
-            const githubVal = "Jonathanstoll0603"
-            const engineer = new Engineer("Jon", 1, "Jon@email.com", githubVal);
-
-            expect(engineer.getGitHub()).toEqual(githubVal);
-        });
-    });
-
-    describe("getRole", () => {
-        
-        it("should return role of 'Engineer' when getRole is called", () => {
-            const roleVal = "Engineer";
-            const engineer = new Engineer("Jon", 1, "Jon@email.com", "UGA");
-
-            expect(engineer.getRole()).toEqual(roleVal);
-        });
-    });
-});

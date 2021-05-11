@@ -1,39 +1,12 @@
-const Intern = require("../lib/Intern");
+  
+const Intern = require("../lib/intern");
 
-describe("Intern class", () => {
-
-    describe("Initialization", () => {
-        it("Should check to ensure an instance of Intern was created when prompted with new Intern()", () => {
-            const intern = new Intern();
-    
-            expect(typeof intern).toEqual("object");
-        });
-    
-        it("Should set school based off the constructor", () => {
-            const schoolVal = "UGA";
-            const intern = new Intern("Jon", 1, "Jon@email.com", schoolVal);
-
-            expect(intern.school).toEqual(schoolVal);
-        });
+describe("Intern Class", () => {
+    it("Intern instance", () => {
+        const int = new Intern('John Wick', '123', 'test@test.com', 'GeorgiaTech');
+        expect(int.name).toBe("John Wick");
+        expect(int.id).toBe("123");
+        expect(int.email).toBe("test@test.com");
+        expect(int.school).toBe("GeorgiaTech");
+      });
     });
-
-    describe("getSchool", () => {
-        
-        it("should return school when getSchool is called", () => {
-            const schoolVal = "UGA"
-            const intern = new Intern("Jon", 1, "Jon@email.com", schoolVal);
-
-            expect(intern.getSchool()).toEqual(schoolVal);
-        });
-    });
-
-    describe("getRole", () => {
-        
-        it("should return role of 'Intern' when getRole is called", () => {
-            const roleVal = "Intern";
-            const intern = new Intern("Jon", 1, "Jon@email.com", "UGA");
-
-            expect(intern.getRole()).toEqual(roleVal);
-        });
-    });
-});
