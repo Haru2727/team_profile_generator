@@ -7,5 +7,5 @@ describe("Manager Class", () => {
         expect(mngr.id).toBe("123");
         expect(mngr.email).toBe("test@test.com");
         expect(mngr.officeNumber).toBe("5555555");
-      });
     });
+});

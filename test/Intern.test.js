@@ -1,4 +1,4 @@
-  
+
 const Intern = require("../lib/intern");
 
 describe("Intern Class", () => {
@@ -8,5 +8,5 @@ describe("Intern Class", () => {
         expect(int.id).toBe("123");
         expect(int.email).toBe("test@test.com");
         expect(int.school).toBe("GeorgiaTech");
-      });
     });
+});

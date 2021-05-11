@@ -7,5 +7,5 @@ describe("Engineer Class", () => {
         expect(engg.id).toBe("123");
         expect(engg.email).toBe("test@test.com");
         expect(engg.github).toBe("haru2727");
-      });
     });
+});

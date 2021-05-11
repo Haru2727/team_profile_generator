@@ -6,5 +6,5 @@ describe("Employee Class", () => {
         expect(emp.name).toBe("John Wick");
         expect(emp.id).toBe("123");
         expect(emp.email).toBe("test@test.com");
-      });
     });
+});
