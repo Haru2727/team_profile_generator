@@ -1,48 +1,59 @@
 const Employee = require("../lib/Employee");
 
-test("Can instantiate Employee instance", () => {
-  const e = new Employee();
-  expect(typeof(e)).toBe("object");
-});
+describe("Employee", () => {
 
-test("Can set name via constructor arguments", () => {
-  const name = "Alice";
-  const e = new Employee(name);
-  expect(e.name).toBe(name);
-});
+    describe("Initialization", () => {
+        it("Should check to ensure an instance of Employee was created when prompted with new Employee()", () => {
+            const employee = new Employee();
 
-test("Can set id via constructor argument", () => {
-  const testValue = 100;
-  const e = new Employee("Foo", testValue);
-  expect(e.id).toBe(testValue);
-});
+            expect(typeof employee).toEqual("object");
+        });
 
-test("Can set email via constructor argument", () => {
-  const testValue = "test@test.com";
-  const e = new Employee("Foo", 1, testValue);
-  expect(e.email).toBe(testValue);
-});
+        it("Should take in a name, age, and email parameter", () => {
+            const name = "Jon";
+            const idNum = 3;
+            const emailAdd = "Jon@email.com";
+            const employee = new Employee(name, idNum, emailAdd);
+      
+            expect(employee.employeeName).toEqual("Jon");
+            expect(employee.id).toEqual(3);
+            expect(employee.email).toEqual("Jon@email.com");
+        });
+    });
+    
+    describe("getName", () => {
+        it("Should get a name when getName() is called.", () => {
+            const nameVal = 1;
+            const employee = new Employee(nameVal, 1, "Jon@email.com");
 
-test("Can get name via getName()", () => {
-  const testValue = "Alice";
-  const e = new Employee(testValue);
-  expect(e.getName()).toBe(testValue);
-});
+            expect(employee.getName()).toEqual(nameVal);
+        });
+    });
 
-test("Can get id via getId()", () => {
-  const testValue = 100;
-  const e = new Employee("Foo", testValue);
-  expect(e.getId()).toBe(testValue);
-});
+    describe("getID", () => {
+        it("Should get an id when getID() is called.", () => {
+            const idVal = 1;
+            const employee = new Employee("Jon", idVal, "Jon@email.com");
 
-test("Can get email via getEmail()", () => {
-  const testValue = "test@test.com";
-  const e = new Employee("Foo", 1, testValue);
-  expect(e.getEmail()).toBe(testValue);
-});
+            expect(employee.getID()).toEqual(idVal);
+        });
+    })
 
-test("getRole() should return \"Employee\"", () => {
-  const testValue = "Employee";
-  const e = new Employee("Alice", 1, "test@test.com");
-  expect(e.getRole()).toBe(testValue);
+    describe("getEmail", () => {
+        it("Should get an id when getEmail() is called.", () => {
+            const emailVal = "Jon@email.com";
+            const employee = new Employee("Jon", 1, emailVal);
+
+            expect(employee.getEmail()).toEqual(emailVal);
+        });
+    });
+
+    describe("getRole", () => {
+        it("Should get role with value of 'Employee' when getRole is called.", () => {
+            const roleVal = "Employee";
+            const employee = new Employee("Jon", 3, "Jon@email.com")
+
+            expect(employee.getRole()).toEqual(roleVal);
+        });
+    });
 });
